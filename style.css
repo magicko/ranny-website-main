@@ -1,0 +1,512 @@
+/* =========================
+   VARIÁVEIS E ROOT
+   ========================= */
+:root {
+  --bg-dark: #121212;
+  --card-dark: #1f1f1f;
+  --gold: #d4af7a;
+  --text-light: #f0f0f0;
+  --text-muted: #a0a0a0;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Poppins', sans-serif;
+  --radius: 12px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-dark: #fff;
+    --card-dark: #f7f7f7;
+    --text-light: #222;
+    --text-muted: #555;
+  }
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+  }
+}
+
+/* =========================
+   RESET E BASE
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+img:not([src*=".svg"]) {
+  image-rendering: auto;
+}
+
+/* =========================
+   TIPOGRAFIA
+   ========================= */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--gold);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 2.2rem + 1.5vw, 3.2rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 1.5rem + 1.2vw, 2.4rem);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 1rem + 0.6vw, 1.6rem);
+}
+
+p {
+  color: var(--text-muted);
+  font-weight: 300;
+  font-size: clamp(0.98rem, 0.95rem + 0.2vw, 1.05rem);
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   LINKS E BOTÕES
+   ========================= */
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover, a:focus {
+  color: #e7c89d;
+}
+
+a:focus-visible, button:focus-visible, .cta-button:focus-visible {
+  outline: 2px dashed var(--gold);
+  outline-offset: 2px;
+}
+
+button, .cta-button {
+  cursor: pointer;
+}
+
+.cta-button,
+.back-to-top {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+  will-change: transform;
+}
+
+.cta-button {
+  background-color: var(--gold);
+  border: none;
+  color: var(--bg-dark);
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1.08rem;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  background-color: #e7c89d;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 122, 0.18);
+  outline: none;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   HERO SECTION
+   ========================= */
+.hero-section {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url('images/background-blurry.jpg') center/cover no-repeat;
+  min-height: min(92vh, 820px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.hero-section .logo {
+  max-width: 90px;
+  height: auto;
+}
+
+.hero-section h1 {
+  color: #fff;
+  font-weight: 700;
+}
+
+.hero-section .lead {
+  color: var(--text-light);
+  max-width: 55ch;
+  margin-inline: auto;
+}
+
+/* =========================
+   ESPECIALIDADES
+   ========================= */
+#especialidades .specialty-card {
+  background-color: var(--card-dark);
+  padding: var(--spacing-md);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--gold);
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#especialidades .specialty-card:hover {
+  box-shadow: 0 4px 24px rgba(212, 175, 122, 0.12);
+  transform: translateY(-2px) scale(1.01);
+}
+
+#especialidades .specialty-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex: 0 0 120px;
+}
+
+#especialidades h3 {
+  font-size: 1.5rem;
+}
+
+/* =========================
+   ANTES E DEPOIS
+   ========================= */
+#antes-depois .row > [class*="col-"] img {
+  border-radius: 8px;
+  display: block;
+}
+
+#antes-depois img {
+  border-radius: var(--radius);
+}
+
+/* =========================
+   DEPOIMENTOS
+   ========================= */
+#depoimentos .testimonial-card {
+  background-color: var(--card-dark);
+  padding: 2rem;
+  border-radius: var(--radius);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#depoimentos .testimonial-card:hover {
+  box-shadow: 0 4px 24px rgba(212, 175, 122, 0.12);
+  transform: translateY(-2px) scale(1.01);
+}
+
+#depoimentos .rating {
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+#depoimentos .author {
+  color: var(--text-light);
+}
+
+/* =========================
+   CAROUSEL BOOTSTRAP
+   ========================= */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) grayscale(100%) brightness(2);
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: var(--gold);
+  opacity: 0.5;
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+}
+
+/* =========================
+   FAQ (ACORDEÃO)
+   ========================= */
+#faq .accordion-item {
+  background-color: var(--card-dark);
+  border: none;
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+#faq .accordion-header .accordion-button {
+  background-color: var(--card-dark);
+  color: var(--text-light);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  border: none;
+}
+
+#faq .accordion-button:not(.collapsed) {
+  color: var(--gold);
+  box-shadow: none;
+}
+
+#faq .accordion-button:focus {
+  box-shadow: none;
+}
+
+#faq .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23d4af7a' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+#faq .accordion-body {
+  color: var(--text-muted);
+  background-color: #151515;
+}
+
+/* =========================
+   MAPA
+   ========================= */
+.map-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #0e0e0e;
+}
+
+.map-container iframe {
+  width: 100%;
+  min-height: 280px;
+  border: 0;
+}
+
+/* =========================
+   FOOTER E CONTATO
+   ========================= */
+footer {
+  background-color: #000;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: var(--spacing-md) 0;
+  text-align: center;
+}
+
+#contato p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   CARD COMPONENT
+   ========================= */
+.card {
+  background-color: var(--card-dark);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(212, 175, 122, 0.12);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  color: var(--gold);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* =========================
+   REVEAL ANIMATION
+   ========================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   BACK TO TOP BUTTON
+   ========================= */
+.back-to-top {
+  position: fixed;
+  bottom: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 48px;
+  height: 48px;
+  background: var(--gold);
+  color: var(--bg-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
+  border: none;
+  font-size: 1.5rem;
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.back-to-top:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.back-to-top:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   SCROLLBAR PERSONALIZADO
+   ========================= */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b2b2b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+/* =========================
+   MEDIA QUERIES
+   ========================= */
+@media (max-width: 991.98px) {
+  .hero-section {
+    min-height: auto;
+    padding-block: 64px;
+  }
+  .hero-section .logo {
+    max-width: 72px;
+  }
+  .hero-section .lead {
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #especialidades .specialty-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: var(--spacing-sm);
+  }
+  #especialidades .specialty-image {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    flex: initial;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    max-width: 80%;
+    height: auto;
+  }
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+  .map-container iframe {
+    height: 260px !important;
+  }
+  .back-to-top {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991.98px) {
+  #especialidades .specialty-card {
+    padding: 1.25rem 1.5rem;
+  }
+  .hero-section .lead {
+    max-width: 65ch;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-section .logo {
+    max-width: 100px;
+  }
+  #especialidades .specialty-image {
+    width: 128px;
+    height: 128px;
+    flex-basis: 128px;
+  }
+}
+
+/* =========================
+   MOTION REDUCTION
+   ========================= */
+@media (prefers-reduced-motion: reduce) {
+  .cta-button {
+    transition: none;
+  }
+  .carousel,
+  .carousel * {
+    scroll-behavior: auto;
+    transition: none !important;
+    animation: none !important;
+  }
+}
